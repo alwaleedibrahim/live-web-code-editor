@@ -1,11 +1,20 @@
-document.getElementById("htmlCode").value="<div>\n\n</div>";
-document.getElementById("cssCode").value="<style>\n\n</style>";
-document.getElementById("jsCode").value="<script>\n\n</script>";
+document.getElementById("htmlCode").value=localStorage.getItem("htmlCode")?
+ localStorage.getItem("htmlCode") 
+ : "<div>\n\n</div>";
+document.getElementById("cssCode").value=localStorage.getItem("cssCode")?
+localStorage.getItem("cssCode") 
+: "<style>\n\n</style>";
+document.getElementById("jsCode").value=localStorage.getItem("jsCode")?
+localStorage.getItem("jsCode") 
+: "<script>\n\n</script>";
 
 function showPreview(){
     var htmlCode = document.getElementById("htmlCode").value;
     var cssCode = ""+document.getElementById("cssCode").value+"";
     var jsCode = ""+document.getElementById("jsCode").value+"";
+    localStorage.setItem("htmlCode", htmlCode)
+    localStorage.setItem("cssCode", cssCode)
+    localStorage.setItem("jsCode", jsCode)
     var frame = document.getElementById("preview-window").contentWindow.document;
     frame.open();
     frame.write(htmlCode+cssCode+jsCode);
